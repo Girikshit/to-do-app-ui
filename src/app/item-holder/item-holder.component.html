@@ -1,0 +1,11 @@
+
+<mat-card class="card">
+    <mat-card-title>{{ title }}</mat-card-title>
+    <mat-card-subtitle>{{ date }}</mat-card-subtitle>
+    <p>{{ description}}</p>
+    <mat-card-actions>
+        <button mat-stroked-button color="primary">Mark as Complete</button>
+        <button mat-stroked-button class="red-button" (click)="deleteItem()">Delete</button>
+    </mat-card-actions>
+</mat-card>
+  
