@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -24,7 +25,7 @@ export class AddItemComponent {
   maxDate: Date;
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
       date: [''],
       title: [''],
@@ -48,7 +49,9 @@ export class AddItemComponent {
 
     this.http.post('http://localhost:8080/api/list/', payload)
       .subscribe({
-        next: () => console.log('Item submitted'),
+        next: () => {console.log('Item submitted');
+          this.router.navigate(['/']);
+        },
         error: err => console.error('Submission failed', err)
       });
   

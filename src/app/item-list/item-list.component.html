@@ -1,6 +1,7 @@
+
 <div class="item-list" *ngIf="data">
     <div *ngFor="let item of data">
         <app-item-holder [id]="item.id" [title]="item.title" [description]="item.description" 
-        [completed]="item.completed" [date]="item.date"></app-item-holder>
+        [completed]="item.completed" [date]="item.date" (toggled)="ngOnInit()"></app-item-holder>
     </div>
 </div>
