@@ -11,20 +11,31 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrl: './item-holder.component.css'
 })
 export class ItemHolderComponent {
-  @Input() title: string; 
-  @Input() description: string;
-  @Input() completed:boolean;
-  @Input() date: string;
-  @Input() id!: BigInteger; 
+  @Input() title!: string; 
+  @Input() description!: string;
+  @Input() completed!:boolean;
+  @Input() date!: string;
+  @Input() id!: number; 
 
   @Output() toggled = new EventEmitter<void>();
 
+  completed_img_source:string = "/assets/images/checkedbox.png";
+  pending_img_source:string = "/assets/images/blank-check-box.png";
+  current_img:string="";
+  cardColor: string = 'white';
 
+  
   constructor(private http: HttpClient){
-    this.title='testtitle';
-    this.description='test';
-    this.completed= false;
-    this.date='testdate';
+    
+  }
+
+  ngOnInit(): void {
+    if(!this.completed){
+      this.current_img=this.pending_img_source;
+    }else{
+      this.current_img=this.completed_img_source;
+      this.cardColor="antiquewhite";
+    }
   }
 
   updateCompleted(): void {

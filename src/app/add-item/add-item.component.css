@@ -9,7 +9,7 @@
 } */
 
 .card {
-    width: 60%;
+    width: 40%;
     margin: 20px auto;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -25,9 +25,12 @@
     margin: 0 auto;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .custom-form-field {
       width: 100%;
+    }
+    .card{
+      width: 80%;
     }
   }
 
