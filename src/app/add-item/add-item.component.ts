@@ -41,10 +41,10 @@ export class AddItemComponent {
   onSubmit() {
     const formData = this.form.value;
 
-    // Convert to desired format if necessary
+
     const payload = {
       ...formData,
-      date: new Date(formData.date).toISOString().split('T')[0] // yyyy-mm-dd
+      date: new Date(formData.date).toISOString().split('T')[0]
     };
 
     this.http.post('http://localhost:8080/api/list/', payload)

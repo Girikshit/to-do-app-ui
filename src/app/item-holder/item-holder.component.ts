@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.component';
 
 @Component({
   selector: 'app-item-holder',
@@ -25,7 +27,7 @@ export class ItemHolderComponent {
   cardColor: string = 'white';
 
   
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private dialog: MatDialog){
     
   }
 
@@ -36,6 +38,21 @@ export class ItemHolderComponent {
       this.current_img=this.completed_img_source;
       this.cardColor="antiquewhite";
     }
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DeletionDialogComponent, {
+      width: '300px',        // or '50%' for relative size
+      height: '20%',       // optional
+      maxWidth: '90vw'       // optional, for responsiveness
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.deleteItem();
+      }
+    });
   }
 
   updateCompleted(): void {
@@ -58,6 +75,7 @@ export class ItemHolderComponent {
         error: err => console.error('Delete failed', err)
       });
   }
+
     
 
 }
