@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { DeletionDialogComponent } from '../deletion-dialog/deletion-dialog.component';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-item-holder',
@@ -43,9 +44,9 @@ export class ItemHolderComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DeletionDialogComponent, {
-      width: '300px',        // or '50%' for relative size
-      height: '20%',       // optional
-      maxWidth: '90vw'       // optional, for responsiveness
+      width: '300px',
+      height: '20%', 
+      maxWidth: '90vw',
     });
   
     dialogRef.afterClosed().subscribe(result => {
@@ -56,7 +57,7 @@ export class ItemHolderComponent {
   }
 
   updateCompleted(): void {
-    this.http.put(`http://localhost:8080/api/list/${this.id}`, null)
+    this.http.put(`${environment.apiUrl}/list/${this.id}`, null)
     .subscribe({
       next: () => {
         console.log(`Item ${this.id} toggle request sent`);
@@ -67,7 +68,7 @@ export class ItemHolderComponent {
   }
 
   deleteItem(): void {
-    this.http.delete(`http://localhost:8080/api/list/${this.id}`)
+    this.http.delete(`${environment.apiUrl}/list/${this.id}`)
       .subscribe({
         next: () => {console.log(`Item ${this.id} deleted`);
         this.toggled.emit();

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { NgIf , CommonModule} from '@angular/common';
 import { ItemHolderComponent } from '../item-holder/item-holder.component';
-
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-item-list',
@@ -18,7 +18,7 @@ export class ItemListComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<Item[]>('http://localhost:8080/api/list/')
+    this.http.get<Item[]>(`${environment.apiUrl}/list/`)
       .subscribe(response => {
         this.data = response;
         console.log(this.data);

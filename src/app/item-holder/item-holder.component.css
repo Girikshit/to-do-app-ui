@@ -1,9 +1,16 @@
 .card{
-    width: 40%;                /* Set the width to 50% of the screen */
-    margin: 20px auto;        /* Center the card horizontally with margin */
-    padding: 10px 20px;            /* Add padding inside the card */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for better appearance */
-    border-radius: 8px;       /* Optional: Add rounded corners */
+    width: 40% ;  
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px;
+    display: block;
+}
+
+@media (max-width: 900px) {
+  .card {
+      width: 85%;
+  }   
 }
 
 .red-button {
@@ -15,10 +22,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
   
   .title {
-    flex-grow: 0.4;
+    flex-grow: 1;
   }
   
   .header-image {
@@ -26,13 +34,9 @@
     height: 25px;
   }
 
-@media (max-width: 900px) {
-    .card {
-        width: 80%;
-}}
-
 
 .card-content {
+  width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }

@@ -1,12 +1,4 @@
-/* .card{
-    width: 50%;               
-    margin: 20px auto;        
-    padding: 20px;          
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-    border-radius: 8px;       
-    background-color: rgb(250, 251, 252);
-    align-items: center;
-} */
+
 
 .card {
     width: 40%;
@@ -30,7 +22,7 @@
       width: 100%;
     }
     .card{
-      width: 80%;
+      width: 85%;
     }
   }
 

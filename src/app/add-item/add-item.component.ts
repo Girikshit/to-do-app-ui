@@ -9,6 +9,7 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import { FormGroup, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-add-item',
@@ -47,7 +48,7 @@ export class AddItemComponent {
       date: new Date(formData.date).toISOString().split('T')[0]
     };
 
-    this.http.post('http://localhost:8080/api/list/', payload)
+    this.http.post(`${environment.apiUrl}/list/`, payload)
       .subscribe({
         next: () => {console.log('Item submitted');
           this.router.navigate(['/']);
